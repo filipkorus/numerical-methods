@@ -19,7 +19,11 @@ clear all; close all;
 
 S = 200; % input value
 
-r = sqrt(S / (6*pi));
+fun = @(r) -(S*r/2 - pi*r^3); % V(r, S)
+r = fminsearch(fun, 0);
+
+%r = sqrt(S / (6*pi));
+
 h = S/(2*pi*r) - r;
 Vmax = pi * r^2 * h;
 fprintf('Vmax = %f\nr = %f\nh = %f\n\n', Vmax, r, h);

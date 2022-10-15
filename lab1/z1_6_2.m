@@ -3,4 +3,4 @@ clear all; close all; % zerowanie pamieci, usuwanie rysunkow
 echo on % wyswietlanie linii programu na ekranie
 
 [A] = imread('agh.jpg');
-imagesc(255-A(:,:,:)); % reverse colors
+imagesc(255-A); % reverse colors
