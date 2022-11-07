@@ -1,22 +1,4 @@
-function draw(M, axis, angle, plotTitle)
-
-if axis == 'x'
-    nx = isOddMultipleOf90(angle);
-    ny = 0;
-    nz = 0;
-elseif axis == 'y'
-    ny = isOddMultipleOf90(angle);
-    nx = 0;
-    nz = 0;
-else
-    nx = 0;
-    ny = 0;
-    if abs(angle) > 0
-        nz = 1;
-    else
-        nz = 0;
-    end
-end
+function draw2(M, nx, ny, nz, plotTitle)
 
 N = 100; % linspace resolution
 if nx == 0 && ny == 0
