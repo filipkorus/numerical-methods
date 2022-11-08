@@ -1,18 +1,23 @@
-% matrix_obiekt3D.m
 clear all; close all;
-load('X.mat');
-size(X)
-figure; grid; plot3( X(:,1), X(:,2), X(:,3), 'b.' ); pause
-x = X(:,1); y = X(:,2); z = X(:,3);
-vmin = min( min(x), min(y) ); % min
-vmax = max( max(x), max(y) ); % max
-[xi,yi] = meshgrid( vmin : (vmax-vmin)/200 : vmax ); % dopasowanie zakresu
-zi = griddata( x, y, z, xi, yi, 'linear' ); % interp: nearest, linear, spline,
-cubic
-figure; surf( xi,yi,zi ); pause % rysunek
-ax = -45/180*pi; ay = -90/180*pi; az = 135/180*pi;
-Rx = [ 1, 0, 0; 0, cos(ax), -sin(ax); 0, sin(ax), cos(ax) ]; % macierz rotacji wzg. x
-Ry = [ cos(ay), 0, -sin(ay); 0, 1, 0; sin(ay), 0, cos(ay) ]; % macierz rotacji wzg. y
-Rz = [ cos(az), -sin(az), 0; sin(az), cos(az), 0; 0, 0, 1 ]; % macierz rotacji wzg. z
-XR = Rz * Ry * Rx * X', % 3 rotacje po kolei
-figure; grid; plot3( XR(1,:), XR(2,:), XR(3,:), 'b.' ); % wynik obrotu
+A = load("babia_gora.dat");
+
+figure; grid; plot3(A(:,1), A(:,2), A(:,3), 'b.');
+
+a = 1; b = 2; c = 0.1; % wartości skalowania
+S = [a, 0, 0;
+     0, b, 0;
+     0, 0, c];
+AS = S*A';
+figure; grid; plot3(AS(1,:), AS(2,:), AS(3,:), 'b.'); title('skalowanie');
+
+x = 99; y = 130; z = 1420; % wartość translacji
+T = zeros(length(A(:,1)), 3);
+T(:,1) = x;
+T(:,2) = y;
+T(:,3) = z;
+
+AT = T+A;
+figure; grid; plot3(AT(:,1), AT(:,2), AT(:,3), 'b.'); title('translacja');
+
+XX = A*S' + T;
+figure; grid; plot3(XX(:,1), XX(:,2), XX(:,3), 'b.');
