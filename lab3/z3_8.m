@@ -2,7 +2,7 @@ close all; clear all;
 
 % Dane wejsciowe
 [x,fpr]=audioread('elephant.wav',[1,2^14]);
-[c,fpr]=audioread('canary.wav',[1,2^14]);
+[c,fps]=audioread('canary.wav',[1,2^14]);
 x=x+c;
 N = length(x);
 
