@@ -14,7 +14,5 @@ timeit(f1)
 
 figure;
 
-aaa = pade(1./(1 + x.^2)),
-
-%f2 = @() fplot(, [-1 1], 'k--'),;
-%timeit(f2)
+f2 = @() fplot(pade(1./(1 + x.^2)), [-1 1], 'k--');
+timeit(f2)
