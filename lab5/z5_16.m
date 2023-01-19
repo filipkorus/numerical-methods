@@ -1,6 +1,6 @@
 clear all; close all;
 
-load("babia_gora.dat");
+babia_gora = load("kopiec.dat");
 
 x = babia_gora(:,1);
 y = babia_gora(:,2);

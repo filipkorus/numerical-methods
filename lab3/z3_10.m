@@ -1,6 +1,6 @@
 clear all; close all;
 
-A = load('babia_gora.dat');
+A = load('kopiec.dat');
 draw(A, 'x', 0, 'Original data');
 
 % ----------------------------------------------
